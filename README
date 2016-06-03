@@ -19,4 +19,22 @@ git commit -m "first commit"//提交到要地仓库，并写一些注释
 git remote add origin git@github.com:excellenthua/Vimconfig.git //连接远程仓库并建了一个名叫：origin的别名;?初次设置的时候需要执行该命令，之后就不需要了。
 git push -u origin master //将本地仓库的东西提交到地址是origin的地址，master分支下，之后直接输入git push 命令好像就可以了
 git pull \\从远程服务器下载
+=====================================================
+如何采用submodule方式更新插件
 
+以插件vim-colors-solarized为例
+cd ~/.vim
+mkdir ~/.vim/bundle
+git submodule add http://github.com/altercation/vim-colors-solarized.git bundle/vim-colors-solarized
+git add .
+git commit -m "Install vim-colors-solarized bundle as a submodule."
+=====================================================
+如何使用
+
+cd ~
+git clone http://github.com/username/dotvim.git ~/.vim
+ln -s ~/.vim/vimrc ~/.vimrc
+ln -s ~/.vim/gvimrc ~/.gvimrc
+cd ~/.vim
+git submodule init
+git submodule update
