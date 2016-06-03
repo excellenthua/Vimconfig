@@ -1,12 +1,9 @@
-<snippet>
-  <content><![CDATA[
 # ${1:  my vim configuration }
-
 =====================================================
 ## 写在前面－如何通过git上传到仓库
 
-'mkdir .ssh && cd .ssh' //终端新建个 .ssh文件目录并进入到该目录
-'ssh-Keygen -t rsa -C "your_email@example.com"' //后面“ ”里面 随意输入个邮箱就行,回车会提示你输入密码什么的，可以无视一直回车下去。
+'mkdir .ssh && cd .ssh' //终端新建个 .ssh文件目录并进入到该目录          
+'ssh-Keygen -t rsa -C "your_email@example.com"' //后面“ ”里面 随意输入个邮箱就行,回车会提示你输入密码什么的，可以无视一直回车下去。  
 'ls -la' // 查看是否存在 id_rsa(私钥) id_rsa.pub(公钥) 这两个东西，如果存在就成功了
 'pbcopy < ~/.ssh/id_rsa.pub' //拷贝 公钥内容到剪切版
 登陆github，选择Account Settings-->SSH Keys 添加ssh
@@ -44,6 +41,3 @@ git pull
 git submodule init
 git submodule update'
 
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-  </snippet>
