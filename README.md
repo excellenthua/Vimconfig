@@ -20,7 +20,7 @@ Key：打开你生成的id\_rsa.pub文件，将其中内容拷贝至此。
 初始化本地仓库
         git add README.md 
         git add .
-加入所有项目
+加入项目
         git status
 检查状态 如果都是绿的 证明成功
         git commit -m "first commit"
@@ -38,7 +38,6 @@ Key：打开你生成的id\_rsa.pub文件，将其中内容拷贝至此。
         git add .
         git commit -m "Install vim-colors-solarized bundle as a submodule."
         git push
-        =====================================================
 ## 如何安装并使用        
         cd ~
         git clone http://github.com/username/dotvim.git ~/.vim
