@@ -10,12 +10,13 @@ pbcopy < ~/.ssh/id_rsa.pub //拷贝 公钥内容到剪切版
 Title：xxxxx@gmail.com
 Key：打开你生成的id_rsa.pub文件，将其中内容拷贝至此。
 
-touch README.md //新建一个记录提交操作的文档
+touch README //新建一个记录提交操作的文档
 git init //初始化本地仓库
 git add README.md //添加
 git add * //加入所有项目
 git status //检查状态 如果都是绿的 证明成功
 git commit -m "first commit"//提交到要地仓库，并写一些注释
-git remote add origin git@github.com:excellenthua/Vimconfig.git //连接远程仓库并建了一个名叫：origin的别名
-git push -u origin master //将本地仓库的东西提交到地址是origin的地址，master分支下
+git remote add origin git@github.com:excellenthua/Vimconfig.git //连接远程仓库并建了一个名叫：origin的别名;?初次设置的时候需要执行该命令，之后就不需要了。
+git push -u origin master //将本地仓库的东西提交到地址是origin的地址，master分支下，之后直接输入git push 命令好像就可以了
+git pull \\从远程服务器下载
 
