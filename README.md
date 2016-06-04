@@ -39,7 +39,7 @@ Key：打开你生成的id\_rsa.pub文件，将其中内容拷贝至此。
 ## 如何安装并使用        
 
         cd ~
-        git clone http://github.com/username/dotvim.git ~/.vim
+        git clone http://github.com/excellenthua/Vimconfig.git ~/.vim
         ln -s ~/.vim/vimrc ~/.vimrc
         ln -s ~/.vim/gvimrc ~/.gvimrc
         cd ~/.vim
