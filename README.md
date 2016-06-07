@@ -1,6 +1,7 @@
-#my vim configuration
+#my vim configuration with pathogen to manage bundles
 =====================================================
-## 写在前面－初次使用git如何配置终端
+This vim configuration uses pathogen to manage bundles. As we know, if we use git clone to download plugin bundles, in fact, each bundle is a git repository. So we need to use git submodule command  to update the configuration. 
+## How to configure you PC the first time you use git —写在前面－初次使用git 如何配置终端
 生成配对的公钥和私钥
 
         mkdir .ssh && cd .ssh    终端新建个 .ssh文件目录并进入到该目录          
@@ -27,7 +28,7 @@ Key：打开你生成的id\_rsa.pub文件，将其中内容拷贝至此。
         git push -u origin master       
      将本地仓库的东西提交到地址是origin的地址，master分支下，之后直接输入git push 命令好像就可以了
         git pull     从远程服务器下载
-## 如何采用submodule方式更新插件
+## How to use submodule to download plugins (For myself)
 以插件vim-colors-solarized为例
 
         cd ~/.vim
@@ -36,14 +37,13 @@ Key：打开你生成的id\_rsa.pub文件，将其中内容拷贝至此。
         git add .
         git commit -m "Install vim-colors-solarized bundle as a submodule."
         git push
-## 如何安装并使用        
+## How to install this vim configuration (For users)
 
-        cd ~
-        git clone http://github.com/excellenthua/Vimconfig.git ~/.vim
-        ln -s ~/.vim/vimrc ~/.vimrc
-        ln -s ~/.vim/gvimrc ~/.gvimrc
-        cd ~/.vim
-        git pull
-        git submodule init
-        git submodule update
+        cd ~  
+        git clone http://github.com/excellenthua/Vimconfig.git ~/.vim  \\git clone this vim configuration to ~/.vim directoty
+        ln -s ~/.vim/vimrc ~/.vimrc  \\symbolic link .vimrc file
+        cd ~/.vim 
+        git pull  \\download from github
+        git submodule init  \\init submodule
+        git submodule update  \\update submodule,always use this command can keep you vim configuration consisitent with the latest version
         
