@@ -168,7 +168,7 @@ set noswapfile
 set expandtab
 
 " Be smart when using tabs ;)
-set smarttab
+"set smarttab
 
 " 1 tab == 4 spaces
 set shiftwidth=4
@@ -439,8 +439,8 @@ set foldmethod=syntax       "代码折叠
 
 " conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
 let mapleader = ','
-nnoremap <C-l> gt
-nnoremap <C-h> gT
+"nnoremap <C-l> gt
+"nnoremap <C-h> gT
 nnoremap <leader>t : tabe<CR>
 
 "conf for plugins {{ 插件相关的配置
@@ -449,9 +449,5 @@ nnoremap <leader>t : tabe<CR>
 set guifont=PowerlineSymbols\ for\ Powerline
 set t_Co=256
 let g:Powerline_symbols = 'fancy'
-"}
-"pathogen是Vim用来管理插件的插件
-"pathogen{
-"call pathogen#infect()
 "}
 "}}

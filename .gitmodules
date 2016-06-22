@@ -4,3 +4,6 @@
 [submodule "bundle/fugitive"]
 	path = bundle/fugitive
 	url = http://github.com/tpope/vim-fugitive.git
+[submodule "after/indent/fortran.vim"]
+	path = after/indent/fortran.vim
+	url = https://github.com/vim-scripts/fortran.vim.git
