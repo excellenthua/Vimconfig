@@ -1,7 +1,8 @@
 #my vim configuration with pathogen to manage bundles
 =====================================================
-This vim configuration uses pathogen to manage bundles. As we know, if we use git clone to download plugin bundles, in fact, each bundle is a git repository. So we need to use git submodule command  to update the configuration. <\br>
+This vim configuration uses pathogen to manage bundles. As we know, if we use git clone to download plugin bundles, in fact, each bundle is a git repository. So we need to use git submodule command  to update the configuration. </br>
 This configuration contains following plugin:
+
         surptab.vim \\use tab to autocomplete
         fortran.vim \\fortran smart indent
         solarized.vim \\use fancy solarized color in vim
