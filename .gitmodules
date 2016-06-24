@@ -7,3 +7,6 @@
 [submodule "after/indent/fortran.vim"]
 	path = after/indent/fortran.vim
 	url = https://github.com/vim-scripts/fortran.vim.git
+[submodule "bundle/supertab"]
+	path = bundle/supertab
+	url = https://github.com/ervandew/supertab.git
