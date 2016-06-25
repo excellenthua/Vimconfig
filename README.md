@@ -6,7 +6,9 @@ This configuration contains following plugin:
         surptab.vim \\use tab to autocomplete
         fortran.vim \\fortran smart indent
         solarized.vim \\use fancy solarized color in vim
-        fugitive.vim 
+        fugitive.vim \\git
+        airline.vim \\smart status lines
+        commentary.vim \\smart comment accordint to the file type
 ## How to configure you PC the first time you use git —写在前面－初次使用git 如何配置终端
 生成配对的公钥和私钥
 

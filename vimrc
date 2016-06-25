@@ -64,7 +64,7 @@ set langmenu=en
 source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
-" Turn on the WiLd menu
+" Turn on the Wild menu
 set wildmenu
 
 " Ignore compiled files
@@ -148,6 +148,7 @@ endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
+set fileencodings=uft-8,gbk "use utf-8 or gbk to open files
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -168,7 +169,7 @@ set noswapfile
 " Use spaces instead of tabs
 set expandtab
 
-" Be smart when using tabs ;)
+" Be smart when using tabs 
 "set smarttab
 
 " 1 tab == 4 spaces
@@ -258,6 +259,12 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """"""""""""""""""""""""""""""
 " Always show the status line
 set laststatus=2
+
+" Use airline plugin
+let g:airline#extensions#tabline#enabled=1
+" Separate buffers with what simbol
+ let g:airline#extensions#tabline#left_sep = ' '
+ let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
@@ -414,41 +421,10 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-" Make VIM remember position in file after reopen
-" if has("autocmd")
-"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
-
-"common conf {{             通用配置
-set ai                      "自动缩进
 set bs=2                    "在insert模式下用退格键删除
-set showmatch               "代码匹配
-set laststatus=2            "总是显示状态行
-set expandtab               "以下三个配置配合使用，设置tab和缩进空格数
-set shiftwidth=4
-set tabstop=4
 set cursorline              "为光标所在行加下划线
 set number                  "显示行号
-set autoread                "文件在Vim之外修改过，自动重新读入
 
-set ignorecase              "检索时忽略大小写
-set fileencodings=uft-8,gbk "使用utf-8或gbk打开文件
-set hls                     "检索时高亮显示匹配项
 set helplang=cn             "帮助系统设置为中文
 set foldmethod=syntax       "代码折叠
-"}}
 
-" conf for tabs, 为标签页进行的配置，通过ctrl h/l切换标签等
-let mapleader = ','
-"nnoremap <C-l> gt
-"nnoremap <C-h> gT
-nnoremap <leader>t : tabe<CR>
-
-"conf for plugins {{ 插件相关的配置
-"状态栏的配置 
-"powerline{
-set guifont=PowerlineSymbols\ for\ Powerline
-set t_Co=256
-let g:Powerline_symbols = 'fancy'
-"}
-"}}
