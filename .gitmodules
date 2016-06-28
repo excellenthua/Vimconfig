@@ -10,9 +10,9 @@
 [submodule "bundle/supertab"]
 	path = bundle/supertab
 	url = https://github.com/ervandew/supertab.git
-[submodule "/Users/huaweizhuo/.vim/bundle/vim-airline"]
-	path = /Users/huaweizhuo/.vim/bundle/vim-airline
-	url = https://github.com/vim-airline/vim-airline
 [submodule "bundle/commentary"]
 	path = bundle/commentary
 	url = git://github.com/tpope/vim-commentary.git
+[submodule "bundle/vim-airline"]
+	path = bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
