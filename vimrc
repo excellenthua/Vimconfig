@@ -41,8 +41,8 @@ set autoread
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
+let mapleader = ";"
+let g:mapleader = ";"
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -263,8 +263,8 @@ set laststatus=2
 " Use airline plugin
 let g:airline#extensions#tabline#enabled=1
 " Separate buffers with what simbol
- let g:airline#extensions#tabline#left_sep = ' '
- let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
@@ -421,10 +421,11 @@ function! <SID>BufcloseCloseIt()
    endif
 endfunction
 
-set bs=2                    "在insert模式下用退格键删除
-set cursorline              "为光标所在行加下划线
-set number                  "显示行号
+set bs=2                    "use backspace to delete in the insert mode
+set cursorline              "add line under the line of the cursor
+set cursorcolumn            "add line under the column of the cursor
+set number                  "show line number
 
-set helplang=cn             "帮助系统设置为中文
-set foldmethod=syntax       "代码折叠
+set helplang=cn             "show Chinese in help system
+set foldmethod=syntax       "fold code
 
