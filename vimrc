@@ -11,7 +11,7 @@
 "    -> Text, tab and indent related
 "    -> Visual mode related
 "    -> Moving around, tabs and buffers
-"    -> Status line
+"    -> Status line and file tree
 "    -> Editing mappings
 "    -> vimgrep searching and cope displaying
 "    -> Spell checking
@@ -27,6 +27,9 @@
 
 " Runtime Path Manipulation
 execute pathogen#infect()
+
+" Make vim config change at once 
+autocmd BufWritePost $MYVIMRC source $MYVIMRC
 
 " Sets how many lines of history VIM has to remember
 set history=500
@@ -129,6 +132,8 @@ syntax enable
 
 try
     colorscheme solarized
+    "colorscheme molokai
+    "colorscheme phd
 catch
 endtry
 
@@ -183,6 +188,11 @@ set tw=500
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+" Set custom indent colors 
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 
 """"""""""""""""""""""""""""""
@@ -263,8 +273,16 @@ set laststatus=2
 " Use airline plugin
 let g:airline#extensions#tabline#enabled=1
 " Separate buffers with what simbol
-let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_sep = '||'
 let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" Use NerdTree to see file tree
+nmap <Leader>fl :NERDTreeToggle<CR>
+let NERDTreeWinSize=32
+let NERDTreeWinPos="right"
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+let NERDTreeAutoDeleteBuffer=1
 
 " Format the status line
 set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
@@ -294,6 +312,11 @@ inoremap ( ()<Esc>:let leavechar=")"<CR>i
 inoremap [ []<Esc>:let leavechar="]"<CR>i
 imap <C-j>j <Esc>:exec "normal f" . leavechar<CR>a
 
+" Copy to system clipboard
+vnoremap <Leader>y "+y
+" Copy from system clipboard
+nmap <Leader>p "+p
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -305,9 +328,41 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ag searching and cope displaying
+" => Searching and cope displaying and replacing
 "    requires ag.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Replace function:
+" confirm£ºif confirm before replace 
+" wholeword£ºif match the whole world
+" replace£ºstrings need to be replac
+function! Replace(confirm, wholeword, replace)
+    wa
+    let flag = ''
+    if a:confirm
+        let flag .= 'gec'
+    else
+        let flag .= 'ge'
+    endif
+    let search = ''
+    if a:wholeword
+        let search .= '\<' . escape(expand('<cword>'), '/\.*$^~[') . '\>'
+    else
+        let search .= expand('<cword>')
+    endif
+    let replace = escape(a:replace, '/\&~')
+    execute 'argdo %s/' . search . '/' . replace . '/' . flag . '| update'
+endfunction
+" No confirm, No whole
+nnoremap <Leader>R :call Replace(0, 0, input('Replace '.expand('<cword>').' with: '))<CR>
+" No confirm, Whole !most useful
+nnoremap <Leader>rw :call Replace(0, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+" Confirm, No whole
+nnoremap <Leader>rc :call Replace(1, 0, input('Replace '.expand('<cword>').' with: '))<CR>
+" Confirm, Whole 
+nnoremap <Leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+nnoremap <Leader>rwc :call Replace(1, 1, input('Replace '.expand('<cword>').' with: '))<CR>
+
+
 " When you press gv you Ag after the selected text
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
@@ -328,10 +383,10 @@ vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 " To go to the previous search results do:
 "   <leader>p
 "
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
+"map <leader>cc :botright cope<cr>
+"map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
+"map <leader>n :cn<cr>
+"map <leader>p :cp<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -427,5 +482,5 @@ set cursorcolumn            "add line under the column of the cursor
 set number                  "show line number
 
 set helplang=cn             "show Chinese in help system
-set foldmethod=syntax       "fold code
+set foldmethod=syntax       "fold code according to syntax
 
